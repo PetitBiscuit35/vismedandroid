@@ -35,7 +35,6 @@ public class PasserelleMedecin extends Passerelle {
         {
             // on prépare une requête http get pour l'URL depts et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(URL_DEPTS, "GET", login, motPasse);
-            Log.i("PasserelleMedecin", URL_DEPTS + " demandée");
 
             // on récupère le résultat JSON, réponse du serveur http à cette requête
             JSONObject unObjetJSON = loadResultJSON(uneRequete);
@@ -78,7 +77,6 @@ public class PasserelleMedecin extends Passerelle {
             uneURL = URL_MEDECINS + "?" + FILTRE_DEPT + "=" + noDept;
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
-            Log.i("PasserelleMedecin", uneURL + " demandée");
             // on récupère le résultat JSON, réponse du serveur http à cette requête
             JSONObject unObjetJSON = loadResultJSON(uneRequete);
 
@@ -126,7 +124,6 @@ public class PasserelleMedecin extends Passerelle {
             uneURL = URL_MEDECINS + "/" + leMedecin.getId();
             // on prépare une requête http PUT avec les données à mettre à jour
             HttpURLConnection uneConnexion = prepareHttpRequestWithData(uneURL,"PUT", leVisiteur, laHashMapToUpdate);
-            Log.i("PasserelleMedecin", uneURL + " demandée");
             // on récupère le résultat JSON, réponse du serveur http à cette requête
             JSONObject result = loadResultJSON(uneConnexion);
 

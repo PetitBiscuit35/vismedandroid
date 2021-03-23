@@ -89,7 +89,6 @@ public class DetailMedecinActivity extends AppCompatActivity {
         HashMap<String, String> laHashMap;
         laHashMap = new HashMap<String, String>();
 
-        laHashMap.put("id", String.valueOf(leMedecin.getId()));
         if (! editTextNom.getText().toString().equals(leMedecin.getNom())) {
             laHashMap.put("nom", editTextNom.getText().toString());
         }

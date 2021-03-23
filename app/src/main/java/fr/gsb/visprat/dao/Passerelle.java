@@ -28,7 +28,7 @@ import fr.gsb.visprat.metier.*;
 public class Passerelle {
 	// protected static String urlHoteWS = "http://192.168.43.135/SIO2/SIO2-20202021/PPE41-GSB-APIRest/index.php/";
 	// protected static String urlHoteWS = "http://192.168.0.67/SIO2/SIO2-20202021/ppe31_vismedws_gr1/index.php/";
-	protected String urlHoteWS = "http://192.168.1.14/SIO2-20202021/PPE41-GSB-APIRest/index.php/";
+	protected static String urlHoteWS = "http://192.168.1.14/SIO2/SIO2-20202021/PPE41-GSB-APIRest/index.php/";
 
 	/**
 	 * Fournit le flux JSON reçu suite à l'appel du service web localisé à l'uri spécifié
@@ -72,6 +72,7 @@ public class Passerelle {
 	 * Prépare la requête HTTP Post à partir d'une uri et des données hashMapToSend à envoyer dans
 	 * le corps de la requête
 	 * @param uri URI demandée
+	 * @param leVisiteur visiteur connecté
 	 * @param hashMapToSend dictionnaire regroupant clés et valeurs des données modifiées à envoyer
 	 * @return HttpUrlConnection requête HTTP préparée
 	 * @throws Exception
@@ -86,6 +87,7 @@ public class Passerelle {
 			data +=  key + "=" + URLEncoder.encode((String) hashMapToSend.get(key), "UTF-8") + "&";
 		}
 		data = data.substring(0,data.length()-1);
+		Log.i("Passerelle", "Data : " + data);
 
 		// écriture des données sur le flux de sortie
 		OutputStream os = cnx.getOutputStream();
@@ -117,6 +119,7 @@ public class Passerelle {
 		byte[] encodedBytes = android.util.Base64.encode(auth.getBytes(), android.util.Base64.DEFAULT);
 		String authHeaderValue = "Basic " + new String(encodedBytes);
 		cnx.setRequestProperty("Authorization", authHeaderValue);
+		Log.i("Passerelle", "Verbe HTTP : " + method + " URI : " + uri);
 		return cnx;
 	}
 	/**
