@@ -17,9 +17,9 @@ import fr.gsb.visprat.metier.Visiteur;
  * @author sio2slam
  */
 public class PasserelleMedecin extends Passerelle {
-    public static final String URL_MEDECINS = urlHoteWS + "medecins";
-    public static final String URL_DEPTS = urlHoteWS + "depts";
-    public static final String FILTRE_DEPT = "dept";
+    public static String urlMedecins = Configuration.getUrlHoteWS() + "medecins";
+    public static String urlDepts = Configuration.getUrlHoteWS() + "depts";
+    public static String filtreDept = "dept";
 
     /**
      * Fournit la liste des départements
@@ -34,7 +34,7 @@ public class PasserelleMedecin extends Passerelle {
         try
         {
             // on prépare une requête http get pour l'URL depts et les données d'authentification
-            HttpURLConnection uneRequete = prepareHttpRequestAuth(URL_DEPTS, "GET", login, motPasse);
+            HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
 
             // on récupère le résultat JSON, réponse du serveur http à cette requête
             JSONObject unObjetJSON = loadResultJSON(uneRequete);
@@ -74,7 +74,7 @@ public class PasserelleMedecin extends Passerelle {
         Medecin unMedecin;
         String uneURL;
         try {
-            uneURL = URL_MEDECINS + "?" + FILTRE_DEPT + "=" + noDept;
+            uneURL = urlMedecins + "?" + filtreDept + "=" + noDept;
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
             // on récupère le résultat JSON, réponse du serveur http à cette requête
@@ -121,7 +121,7 @@ public class PasserelleMedecin extends Passerelle {
         String uneURL;
         try
         {
-            uneURL = URL_MEDECINS + "/" + leMedecin.getId();
+            uneURL = urlMedecins + "/" + leMedecin.getId();
             // on prépare une requête http PUT avec les données à mettre à jour
             HttpURLConnection uneConnexion = prepareHttpRequestWithData(uneURL,"PUT", leVisiteur, laHashMapToUpdate);
             // on récupère le résultat JSON, réponse du serveur http à cette requête

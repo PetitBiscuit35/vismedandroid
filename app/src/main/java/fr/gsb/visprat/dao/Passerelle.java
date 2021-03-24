@@ -26,10 +26,6 @@ import fr.gsb.visprat.metier.*;
  * @author sio2slam
  */
 public class Passerelle {
-	// protected static String urlHoteWS = "http://192.168.43.135/SIO2/SIO2-20202021/PPE41-GSB-APIRest/index.php/";
-	// protected static String urlHoteWS = "http://192.168.0.67/SIO2/SIO2-20202021/ppe31_vismedws_gr1/index.php/";
-	protected static String urlHoteWS = "http://192.168.1.14/SIO2/SIO2-20202021/PPE41-GSB-APIRest/index.php/";
-
 	/**
 	 * Fournit le flux JSON reçu suite à l'appel du service web localisé à l'uri spécifié
 	 * @param uneRequeteHTTP
