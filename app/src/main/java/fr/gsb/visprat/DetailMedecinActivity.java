@@ -71,7 +71,7 @@ public class DetailMedecinActivity extends AppCompatActivity {
         Intent uneIntention;
         uneIntention = getIntent();
 		this.position = uneIntention.getIntExtra(POSITION, 0);
-        this.leMedecin = uneIntention.getParcelableExtra(MEDECIN);
+        this.leMedecin = (Medecin) uneIntention.getSerializableExtra(MEDECIN);
         // initialisation des zones d'éditions à partir du médecin reçu
 		this.editTextNom.setText(this.leMedecin.getNom());
 		this.editTextPrenom.setText(this.leMedecin.getPrenom());

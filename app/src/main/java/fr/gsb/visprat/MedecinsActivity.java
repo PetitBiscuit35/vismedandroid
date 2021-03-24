@@ -68,7 +68,7 @@ public class MedecinsActivity extends AppCompatActivity {
 			if (requestCode == CODE_UPDATE) {
 				Medecin leMedecin;
 				position = data.getIntExtra("position", 0);
-				leMedecin = data.getParcelableExtra("medecin");
+				leMedecin = (Medecin) data.getSerializableExtra("medecin");
 				this.lesMedecins.set(position, leMedecin);
 				this.unAdaptateur.notifyDataSetChanged();
 			}

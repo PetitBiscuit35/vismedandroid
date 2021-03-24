@@ -3,11 +3,13 @@ package fr.gsb.visprat.metier;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Classe regroupant les caractéristiques d'un médecin
  * @author sio2slam
  */
-public class Medecin implements Parcelable {
+public class Medecin implements Serializable {
 	private int id;
 	private String nom;
 	private String prenom;
@@ -45,20 +47,6 @@ public class Medecin implements Parcelable {
         this.email = "";
         this.specialiteComplementaire = "";
     }
-	/**
-	 * Instancie un médecin à partir d'un parcel
-	 */
-	public Medecin(Parcel in) {
-		this.id = in.readInt();
-		this.nom = in.readString();
-		this.prenom	= in.readString();
-		this.adresse	= in.readString();
-		this.codePostal	= in.readString();
-		this.ville	= in.readString();
-		this.tel	= in.readString();
-		this.email	= in.readString();
-		this.specialiteComplementaire	= in.readString();
-	}
 	/**
 	 * Fournit l'id du médecin
 	 * @return id du médecin
@@ -198,48 +186,4 @@ public class Medecin implements Parcelable {
 		return this.nom + "-" + this.prenom + "-" + this.ville;
 	}
 
-	/**
-	 * Fournit le bitmask indiquant si l'instance contient des types d'objets spéciaux,
-     * ici valeur 0 retournée car aucun objet spécial contenu dans une instance de classe Medecin
-	 * @return représentation textuelle
-	 */
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	/**
-	 * Construit le parcel dest à partir de l'instance d'un médecin
-	 */
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(this.getId());
-		dest.writeString(this.getNom());
-		dest.writeString(this.getPrenom());
-		dest.writeString(this.getAdresse());
-		dest.writeString(this.getCodePostal());
-		dest.writeString(this.getVille());
-		dest.writeString(this.getTel());
-		dest.writeString(this.getEmail());
-		dest.writeString(this.getSpecialiteComplementaire());
-	}
-
-	/**
-	 * Constructeur statique de l'interface Parcelable utilisé pour instancier des objets et des
-	 * tableaux d'objets de la classe.
-	 */
-	public static final Parcelable.Creator<Medecin> CREATOR = new Parcelable.Creator<Medecin>()
-	{
-		@Override
-		public Medecin createFromParcel(Parcel source)
-		{
-			return new Medecin(source);
-		}
-
-		@Override
-		public Medecin[] newArray(int size)
-		{
-			return new Medecin[size];
-		}
-	};
 }
