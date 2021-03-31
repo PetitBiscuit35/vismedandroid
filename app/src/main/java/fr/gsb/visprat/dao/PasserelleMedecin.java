@@ -17,9 +17,9 @@ import fr.gsb.visprat.metier.Visiteur;
  * @author sio2slam
  */
 public class PasserelleMedecin extends Passerelle {
-    public static String urlMedecins = Configuration.getUrlHoteWS() + "medecins";
+    public static String urlMedecins = Configuration.getUrlHoteWS() + "index.php/medecins";
     public static String urlDepts = Configuration.getUrlHoteWS() + "index.php/medecins/departement";
-    public static String filtreDept = "dept";
+    public static String filtreDept = "departement";
 
     /**
      * Fournit la liste des départements
@@ -74,7 +74,7 @@ public class PasserelleMedecin extends Passerelle {
         Medecin unMedecin;
         String uneURL;
         try {
-            uneURL = urlMedecins + "?" + filtreDept + "=" + noDept;
+            uneURL = urlMedecins + "/" + filtreDept + "/" + noDept;
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
             // on récupère le résultat JSON, réponse du serveur http à cette requête
@@ -102,6 +102,7 @@ public class PasserelleMedecin extends Passerelle {
                 lesMedecins.add(unMedecin);
             }
         }
+
 		catch (Exception ex) {
             Log.e("Passerelle", "Erreur exception : " + ex.toString());
             throw ex;
