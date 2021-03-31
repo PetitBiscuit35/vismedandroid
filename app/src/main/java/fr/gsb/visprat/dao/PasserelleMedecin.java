@@ -14,12 +14,12 @@ import fr.gsb.visprat.metier.Visiteur;
 /**
  * Classe prenant en charge l'appel des web services pour obtenir ou modifier les données
  * concernant les médecins
- * @author sio2slam
+ * @author sio2slamd
  */
 public class PasserelleMedecin extends Passerelle {
     public static String urlMedecins = Configuration.getUrlHoteWS() + "medecins";
-    public static String urlDepts = Configuration.getUrlHoteWS() + "depts";
-    public static String filtreDept = "dept";
+    public static String urlDepts = Configuration.getUrlHoteWS() + "index.php/medecins/departement/";
+    public static String filtreDept = "";
 
     /**
      * Fournit la liste des départements
@@ -170,7 +170,7 @@ public class PasserelleMedecin extends Passerelle {
      */
     private static Integer getUnNumeroDeptFromJSONObject(JSONObject unObjetJSON) throws Exception {
         Integer num;
-        num = (Integer) Integer.parseInt(unObjetJSON.getString("noDept"));
+        num = (Integer) Integer.parseInt(unObjetJSON.getString("noDepts"));
         return num;
     }
 }

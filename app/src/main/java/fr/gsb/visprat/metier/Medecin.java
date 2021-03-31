@@ -107,6 +107,7 @@ public class Medecin implements Serializable {
 	 * Affecte le code postal du médecin
 	 * @param codePostal
 	 */
+
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
