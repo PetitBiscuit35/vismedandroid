@@ -18,7 +18,7 @@ import fr.gsb.visprat.metier.Visiteur;
  */
 public class PasserelleMedecin extends Passerelle {
     public static String urlMedecins = Configuration.getUrlHoteWS() + "medecins";
-    public static String urlDepts = Configuration.getUrlHoteWS() + "depts";
+    public static String urlDepts = Configuration.getUrlHoteWS() + "index.php/medecins/departement";
     public static String filtreDept = "dept";
 
     /**
@@ -170,7 +170,7 @@ public class PasserelleMedecin extends Passerelle {
      */
     private static Integer getUnNumeroDeptFromJSONObject(JSONObject unObjetJSON) throws Exception {
         Integer num;
-        num = (Integer) Integer.parseInt(unObjetJSON.getString("noDept"));
+        num = (Integer) Integer.parseInt(unObjetJSON.getString("noDepts"));
         return num;
     }
 }
