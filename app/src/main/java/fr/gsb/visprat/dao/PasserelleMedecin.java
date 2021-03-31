@@ -33,6 +33,7 @@ public class PasserelleMedecin extends Passerelle {
         Integer unNumeroDept;
         try
         {
+
             // on prépare une requête http get pour l'URL depts et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
 
