@@ -109,6 +109,7 @@ public class PasserelleMedecin extends Passerelle {
         }
         return lesMedecins;
     }
+
     /**
      * Prend en charge la mise à jour des données à modifier d'un médecin
      * et rend le médecin modifié lorsque la mise à jour a été réellement réalisée
