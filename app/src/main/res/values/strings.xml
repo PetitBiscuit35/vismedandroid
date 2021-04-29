@@ -18,9 +18,16 @@
     <string name="title_activity_depts">Liste des départements</string>
     <string name="title_activity_medecins">Médecins</string>
     <string name="title_activity_medecin_detail">Détail médecin</string>
+
     <string name="inviteNom">Nom:</string>
     <string name="invitePrenom">Prénom:</string>
+    <string name="inviteAdresse">Adresse:</string>
+    <string name="inviteCodePostal">Code Postal:</string>
+    <string name="inviteTel">Téléphone:</string>
+    <string name="inviteEmail">E-mail:</string>
+    <string name="inviteSpecialiteComplementaire">Spécialité Complémentaire:</string>
     <string name="inviteVille">Ville:</string>
+
     <string name="hintNom">Durand</string>
     <string name="hintPrenom">Paul</string>
     <string name="hintVille">Rennes</string>
