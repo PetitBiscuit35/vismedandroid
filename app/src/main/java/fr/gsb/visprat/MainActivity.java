@@ -4,6 +4,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -56,12 +59,42 @@ public class MainActivity extends AppCompatActivity {
 	    this.buttonValider = (Button) this.findViewById(R.id.buttonValider);
 	    this.editTextLogin = (EditText) this.findViewById(R.id.editTextLogin);
 	    this.editTextMdp = (EditText) this.findViewById(R.id.editTextMotPasse);
-	    
+
+	    // Ecouteurs pour les champs à renseigner
+	    editTextLogin.addTextChangedListener(new CheckIfEmpty());
+	    editTextMdp.addTextChangedListener(new CheckIfEmpty());
+
+	    // Désactive le bouton de validation
+	    buttonValider.setEnabled(false);
+
 	    // on affecte un écouteur d'événement clic au bouton Valider
 	    this.buttonValider.setOnClickListener(new ButtonValiderClick());		
 	}
 //endregion MethodesPrivees
 // region ClassesInternesPrivees
+	private class CheckIfEmpty implements TextWatcher{
+	@Override
+	public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+	}
+
+	@Override
+	public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+		// Si les 2 champs ne sont pas renseignés le bouton de validation n'est pas activé
+		if (editTextLogin.getText().length() > 0 && editTextMdp.getText().length() > 0) {
+			buttonValider.setEnabled(true);
+		}
+		else {
+			buttonValider.setEnabled(false);
+		}
+
+	}
+
+	@Override
+	public void afterTextChanged(Editable editable) {
+
+	}
+}
     /**
      * Classe interne servant d'écouteur de l'événement click sur le bouton Valider
      */
