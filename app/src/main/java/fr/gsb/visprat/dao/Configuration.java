@@ -1,9 +1,9 @@
 package fr.gsb.visprat.dao;
 
 public class Configuration {
-    private static String protocol = "http";
-    private static String host = "100.115.28.78";
-    private static String path = "sio2/MONTEIL/WS-VisMed";
+    private static String protocol = "https";
+    private static String host = "192.168.0.23";
+    private static String path = "sio2/simon/WS-VisMed";
 
     /**
      * Fournit l'URL complète d'accès à l'API-Rest

@@ -93,7 +93,6 @@ public class Passerelle {
 		// fermeture des flux en sortie
 		writer.close();
 		os.close();
-
 		return cnx;
 	}
 
@@ -109,6 +108,7 @@ public class Passerelle {
 	protected static HttpURLConnection prepareHttpRequestAuth(String uri, String method, String login, String motPasse)  throws Exception {
 		URL url = new URL(uri);
 		HttpURLConnection cnx = (HttpURLConnection) url.openConnection();
+		HttpsTrustManager.allowAllSSL();
 		cnx.setRequestMethod(method);
 		// ajoute les données d'authentification dans le champ d'entête Authorization
 		String auth = login + ":" + motPasse;
@@ -118,6 +118,8 @@ public class Passerelle {
 		Log.i("Passerelle", "Verbe HTTP : " + method + " URI : " + uri);
 		return cnx;
 	}
+
+
 	/**
 	 * Prépare une requête http avec les données d'authentification
 	 * @param uri  URL demandée
