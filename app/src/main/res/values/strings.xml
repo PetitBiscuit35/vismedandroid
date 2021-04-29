@@ -15,7 +15,7 @@
     <string name="msgErrChampVide">Au moins un champ de saisie n\'est pas renseigné !</string>
     <string name="msgErrConnexionInvalide">Login et/ou mot de passe invalide</string>
     <string name="msgErrUpdateMedecin">Erreur lors de la modification des données du médecin</string>
-    <string name="title_activity_depts">Départements</string>
+    <string name="title_activity_depts">Liste des départements</string>
     <string name="title_activity_medecins">Médecins</string>
     <string name="title_activity_medecin_detail">Détail médecin</string>
     <string name="inviteNom">Nom:</string>

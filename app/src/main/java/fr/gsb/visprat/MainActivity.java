@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 				monAppli.setVisiteur(leVisiteur);
 				// crée une intention passée à l'activité de classe DeptsActivity
 				uneIntention = new Intent(MainActivity.this, DeptsActivity.class);
+				uneIntention.putExtra(DeptsActivity.LOGIN, login);
 				uneIntention.putExtra(DeptsActivity.DEPTS, lesDepts);
 				startActivity(uneIntention);
 			}
