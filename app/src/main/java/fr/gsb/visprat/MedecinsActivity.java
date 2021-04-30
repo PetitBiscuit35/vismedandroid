@@ -31,6 +31,7 @@ public class MedecinsActivity extends AppCompatActivity {
 	ArrayList<Medecin> lesMedecins;
 	ArrayAdapter<Medecin> unAdaptateur;
 	private int noDept;
+
 //region MethodesProtegeesRedefinies
 	/**
 	 * Méthode appelée lors de la création de l'activité
