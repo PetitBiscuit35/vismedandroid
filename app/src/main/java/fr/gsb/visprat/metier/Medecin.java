@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+import static android.icu.lang.UCharacter.toUpperCase;
+
 /**
  * Classe regroupant les caractéristiques d'un médecin
  * @author sio2slam
@@ -184,7 +186,9 @@ public class Medecin implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return this.nom + "-" + this.prenom + "-" + this.ville;
+		return this.nom.toUpperCase() + " " + this.prenom + " ("
+				+ this.adresse + ", " + this.codePostal + " "
+				+ this.ville + ") - Tel : " + this.tel;
 	}
 
 }

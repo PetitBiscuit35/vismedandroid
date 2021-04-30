@@ -30,6 +30,13 @@ public class DetailMedecinActivity extends AppCompatActivity {
     private EditText editTextNom;
     private EditText editTextPrenom;
     private EditText editTextVille;
+
+	private EditText editTextAdresse;
+	private EditText editTextCodePostal;
+	private EditText editTextTel;
+	private EditText editTextEmail;
+	private EditText editTextSpecialiteComplementaire;
+
     private Button buttonUpdate;
 //region MethodesProtegeesRedefinies
     /**
@@ -65,6 +72,13 @@ public class DetailMedecinActivity extends AppCompatActivity {
         this.editTextNom = (EditText) findViewById(R.id.editTextNom);
         this.editTextPrenom = (EditText) findViewById(R.id.editTextPrenom);
         this.editTextVille = (EditText) findViewById(R.id.editTextVille);
+
+		this.editTextAdresse = (EditText) findViewById(R.id.editTextAdresse);
+		this.editTextCodePostal = (EditText) findViewById(R.id.editTextCodePostal);
+		this.editTextTel = (EditText) findViewById(R.id.editTextTel);
+		this.editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+		this.editTextSpecialiteComplementaire = (EditText) findViewById(R.id.editTextSpecialiteComplementaire);
+
         this.buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
 
         // récupération du médecin véhiculé par l'intention
@@ -72,10 +86,17 @@ public class DetailMedecinActivity extends AppCompatActivity {
         uneIntention = getIntent();
 		this.position = uneIntention.getIntExtra(POSITION, 0);
         this.leMedecin = (Medecin) uneIntention.getSerializableExtra(MEDECIN);
+
         // initialisation des zones d'éditions à partir du médecin reçu
 		this.editTextNom.setText(this.leMedecin.getNom());
 		this.editTextPrenom.setText(this.leMedecin.getPrenom());
 		this.editTextVille.setText(this.leMedecin.getVille());
+		this.editTextAdresse.setText(this.leMedecin.getAdresse());
+		this.editTextCodePostal.setText(this.leMedecin.getCodePostal());
+		this.editTextTel.setText(this.leMedecin.getTel());
+		this.editTextEmail.setText(this.leMedecin.getEmail());
+		this.editTextSpecialiteComplementaire.setText(this.leMedecin.getSpecialiteComplementaire());
+
         // initialisation des écouteurs d'événements
         this.buttonUpdate.setOnClickListener(new OnButtonClick());
    	}
@@ -98,6 +119,22 @@ public class DetailMedecinActivity extends AppCompatActivity {
         if (! editTextVille.getText().toString().equals(leMedecin.getVille())) {
             laHashMap.put("ville", editTextVille.getText().toString());
         }
+
+		if (! editTextAdresse.getText().toString().equals(leMedecin.getAdresse())) {
+			laHashMap.put("adresse", editTextAdresse.getText().toString());
+		}
+		if (! editTextCodePostal.getText().toString().equals(leMedecin.getCodePostal())) {
+			laHashMap.put("codePostal", editTextCodePostal.getText().toString());
+		}
+		if (! editTextTel.getText().toString().equals(leMedecin.getTel())) {
+			laHashMap.put("tel", editTextTel.getText().toString());
+		}
+		if (! editTextEmail.getText().toString().equals(leMedecin.getEmail())) {
+			laHashMap.put("email", editTextEmail.getText().toString());
+		}
+		if (! editTextSpecialiteComplementaire.getText().toString().equals(leMedecin.getSpecialiteComplementaire())) {
+			laHashMap.put("specialiteComplementaire", editTextSpecialiteComplementaire.getText().toString());
+		}
         return laHashMap;
     }
 //endregion MethodesPrivees

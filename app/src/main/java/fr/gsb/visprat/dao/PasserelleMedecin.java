@@ -18,7 +18,9 @@ import fr.gsb.visprat.metier.Visiteur;
  */
 public class PasserelleMedecin extends Passerelle {
     public static String urlMedecins = Configuration.getUrlHoteWS() + "index.php/medecins";
+
     public static String urlDepts = Configuration.getUrlHoteWS() + "index.php/medecins/departement/";
+
     public static String filtreDept = "departement";
 
     /**
@@ -103,12 +105,14 @@ public class PasserelleMedecin extends Passerelle {
                 lesMedecins.add(unMedecin);
             }
         }
+
 		catch (Exception ex) {
             Log.e("Passerelle", "Erreur exception : " + ex.toString());
             throw ex;
         }
         return lesMedecins;
     }
+
     /**
      * Prend en charge la mise à jour des données à modifier d'un médecin
      * et rend le médecin modifié lorsque la mise à jour a été réellement réalisée
@@ -132,6 +136,12 @@ public class PasserelleMedecin extends Passerelle {
             leMedecin.setNom((laHashMapToUpdate.containsKey("nom")) ? laHashMapToUpdate.get("nom") : leMedecin.getNom());
             leMedecin.setPrenom((laHashMapToUpdate.containsKey("prenom")) ? laHashMapToUpdate.get("prenom") : leMedecin.getPrenom());
             leMedecin.setVille((laHashMapToUpdate.containsKey("ville")) ? laHashMapToUpdate.get("ville") : leMedecin.getVille());
+
+            leMedecin.setAdresse((laHashMapToUpdate.containsKey("adresse")) ? laHashMapToUpdate.get("adresse") : leMedecin.getAdresse());
+            leMedecin.setCodePostal((laHashMapToUpdate.containsKey("codePostal")) ? laHashMapToUpdate.get("codePostal") : leMedecin.getCodePostal());
+            leMedecin.setTel((laHashMapToUpdate.containsKey("tel")) ? laHashMapToUpdate.get("tel") : leMedecin.getTel());
+            leMedecin.setEmail((laHashMapToUpdate.containsKey("email")) ? laHashMapToUpdate.get("email") : leMedecin.getEmail());
+            leMedecin.setSpecialiteComplementaire((laHashMapToUpdate.containsKey("specialiteComplementaire")) ? laHashMapToUpdate.get("specialiteComplementaire") : leMedecin.getSpecialiteComplementaire());
         }
         catch (Exception ex) {
             Log.e("Passerelle", "Erreur exception : \n" + ex.toString());

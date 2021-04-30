@@ -1,53 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
+        android:id="@+id/textViewNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="@string/hintNom"
         android:text="@string/inviteNom"
-        android:id="@+id/textViewNom"
-        android:hint="@string/hintNom" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#050505"
+        android:textSize="22sp" />
 
     <EditText
+        android:id="@+id/editTextNom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextNom"
         android:layout_gravity="center_horizontal" />
 
     <TextView
+        android:id="@+id/textViewPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/invitePrenom"
-        android:id="@+id/textViewPrenom"
+        android:hint="@string/hintPrenom"
         android:inputType="textMultiLine"
-        android:hint="@string/hintPrenom" />
+        android:text="@string/invitePrenom"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#050505" />
 
     <EditText
+        android:id="@+id/editTextPrenom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextPrenom" />
+        android:layout_height="wrap_content" />
+
 
     <TextView
+        android:id="@+id/textViewAdresse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/inviteAdresse"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/inviteVille"
-        android:id="@+id/textViewVille" />
+        android:textColor="#050505"
+        android:textSize="22sp" />
 
     <EditText
+        android:id="@+id/editTextAdresse"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextVille"
-        android:hint="@string/hintVille" />
+        android:layout_height="wrap_content"/>
 
-    <Button
+    <TextView
+        android:id="@+id/textViewCodePostal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/boutonModifier"
-        android:id="@+id/buttonUpdate" />
+        android:text="@string/inviteCodePostal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#050505"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/editTextCodePostal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/textViewVille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inviteVille"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#050505"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/editTextVille"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hintVille" />
+
+    <TextView
+        android:id="@+id/textViewTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inviteTel"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#050505"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/editTextTel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inviteEmail"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#050505"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/textViewSpecialiteComplementaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inviteSpecialiteComplementaire"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#050505"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/editTextSpecialiteComplementaire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boutonModifier" />
 
 </LinearLayout>

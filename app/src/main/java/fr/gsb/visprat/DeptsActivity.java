@@ -25,6 +25,8 @@ public class DeptsActivity extends AppCompatActivity {
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
 	 */
 	public static final String DEPTS = "depts";
+	public static final String LOGIN = "login";
+
 
 //region MethodesProtegeesRedefinies
 	/**
@@ -58,7 +60,12 @@ public class DeptsActivity extends AppCompatActivity {
 	private void initialisations() {
 		Intent uneIntention;
 		uneIntention = getIntent();
+
 		lesDepts = uneIntention.getIntegerArrayListExtra("depts");
+
+		// Affichage du login connecté
+		String login = uneIntention.getStringExtra("login");
+		getSupportActionBar().setTitle(getSupportActionBar().getTitle() + " (" + login + ")");
 
 		listViewDepts = (ListView) findViewById(R.id.listViewDepts);
 		unAdaptateur = new ArrayAdapter<Integer>(DeptsActivity.this, android.R.layout.simple_list_item_1, lesDepts);
