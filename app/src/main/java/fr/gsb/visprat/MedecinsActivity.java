@@ -153,7 +153,7 @@ public class MedecinsActivity extends AppCompatActivity {
 			// ici, on teste le type de résultat, exception ou liste
 			if ( result instanceof Exception ) {
 				Exception ex = (Exception) result;
-				Toast.makeText(MedecinsActivity.this, "Erreur récupération données sur les médecins : " + ex.getMessage(), Toast.LENGTH_LONG).show();
+				Toast.makeText(MedecinsActivity.this, R.string.msgErrRecupMedecins + ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
 			else {
 				lesMedecins = (ArrayList<Medecin>) result;

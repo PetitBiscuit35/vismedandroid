@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import fr.gsb.visprat.R;
 import fr.gsb.visprat.metier.Medecin;
 import fr.gsb.visprat.metier.Visiteur;
 
@@ -58,7 +59,7 @@ public class PasserelleMedecin extends Passerelle {
             return lesDepts;
         }
         catch (Exception ex) {
-            Log.e("Passerelle", "Erreur exception : " + ex.toString());
+            Log.e("Passerelle", R.string.errException + ex.toString());
             throw ex;
         }
     }
@@ -104,7 +105,7 @@ public class PasserelleMedecin extends Passerelle {
         }
 
 		catch (Exception ex) {
-            Log.e("Passerelle", "Erreur exception : " + ex.toString());
+            Log.e("Passerelle", R.string.errException + ex.toString());
             throw ex;
         }
         return lesMedecins;
@@ -141,7 +142,7 @@ public class PasserelleMedecin extends Passerelle {
             leMedecin.setSpecialiteComplementaire((laHashMapToUpdate.containsKey("specialiteComplementaire")) ? laHashMapToUpdate.get("specialiteComplementaire") : leMedecin.getSpecialiteComplementaire());
         }
         catch (Exception ex) {
-            Log.e("Passerelle", "Erreur exception : \n" + ex.toString());
+            Log.e("Passerelle", R.string.errException + ex.toString());
             throw ex;
         }
         return leMedecin;

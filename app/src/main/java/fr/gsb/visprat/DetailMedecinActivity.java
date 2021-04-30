@@ -149,7 +149,7 @@ public class DetailMedecinActivity extends AppCompatActivity {
 			HashMap<String, String> hashMapToUpdate;
 			hashMapToUpdate = getHashMapToUpdate();
 			if ( hashMapToUpdate.size() == 0 ) { // aucun champ de saisie n'a été changée
-				Toast.makeText(DetailMedecinActivity.this, "Aucune donnée modifiée", Toast.LENGTH_LONG).show();
+				Toast.makeText(DetailMedecinActivity.this, R.string.aucuneDonnees, Toast.LENGTH_LONG).show();
 			}
 			else { // il faut demander la mise à jour du médecin
 				new MedecinUpdate().execute(leMedecin, hashMapToUpdate);

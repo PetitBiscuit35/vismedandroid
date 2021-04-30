@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
+import fr.gsb.visprat.R;
 import fr.gsb.visprat.metier.*;
 
 /**
@@ -58,8 +59,8 @@ public class Passerelle {
 		// génération d'une exception si code réponse non ok avec lecture de la donnée de clé status
 		if ( codeStatutHttp != HttpURLConnection.HTTP_OK) {
 			messageStatut = json.getString("status");
-			Log.e("Passerelle", "Code statut " + codeStatutHttp + " Message statut : " + messageStatut);
-			throw new Exception("Code statut " + codeStatutHttp + " Message statut : " + messageStatut);
+			Log.e("Passerelle", R.string.codeStatut + codeStatutHttp + R.string.msgStatut + messageStatut);
+			throw new Exception(R.string.codeStatut + codeStatutHttp + R.string.msgStatut + messageStatut);
 		}
 
 		return json;
@@ -83,7 +84,7 @@ public class Passerelle {
 			data +=  key + "=" + URLEncoder.encode((String) hashMapToSend.get(key), "UTF-8") + "&";
 		}
 		data = data.substring(0,data.length()-1);
-		Log.i("Passerelle", "Data : " + data);
+		Log.i("Passerelle", R.string.data + data);
 
 		// écriture des données sur le flux de sortie
 		OutputStream os = cnx.getOutputStream();
@@ -115,7 +116,7 @@ public class Passerelle {
 		byte[] encodedBytes = android.util.Base64.encode(auth.getBytes(), android.util.Base64.DEFAULT);
 		String authHeaderValue = "Basic " + new String(encodedBytes);
 		cnx.setRequestProperty("Authorization", authHeaderValue);
-		Log.i("Passerelle", "Verbe HTTP : " + method + " URI : " + uri);
+		Log.i("Passerelle", R.string.verbeHTTP + method + R.string.URI + uri);
 		return cnx;
 	}
 
@@ -155,7 +156,7 @@ public class Passerelle {
 				is.close();  // fermeture du flux en entrée
 			}
 			catch (IOException e) {
-				Log.e("Passerelle", "IOException pour convertir le flux en chaîne " + e.toString());
+				Log.e("Passerelle", R.string.IOException + e.toString());
 			}
 		}
 		return sb.toString();

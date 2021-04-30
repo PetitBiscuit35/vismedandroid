@@ -32,4 +32,14 @@
     <string name="hintPrenom">Paul</string>
     <string name="hintVille">Rennes</string>
 
+    <string name="codeStatut">Code Statut </string>
+    <string name="msgStatut">Message Statut : </string>
+    <string name="data">Data : </string>
+    <string name="verbeHTTP">Verble HTTP : </string>
+    <string name="URI">URI : </string>
+    <string name="IOException">IOException pour convertir le flux en chaîne </string>
+    <string name="errException">Erreur exception : </string>
+    <string name="aucuneDonnees">Aucune donnée modifiée</string>
+    <string name="msgErrRecupMedecins">Erreur récupération données sur les médecins : </string>
+
 </resources>
