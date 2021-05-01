@@ -31,7 +31,8 @@
     <string name="hintNom">Durand</string>
     <string name="hintPrenom">Paul</string>
     <string name="hintVille">Rennes</string>
-
+    <string name="action_share" />
+    <string name="title_activity_settings">Settings</string>
 
 
 </resources>

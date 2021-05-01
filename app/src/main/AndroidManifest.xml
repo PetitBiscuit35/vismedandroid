@@ -31,5 +31,10 @@
             android:name="fr.gsb.visprat.DetailMedecinActivity"
             android:label="@string/title_activity_medecins" >
         </activity>
+        <activity
+            android:name="fr.gsb.visprat.settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+
     </application>
 </manifest>

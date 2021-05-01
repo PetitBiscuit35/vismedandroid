@@ -3,15 +3,22 @@ package fr.gsb.visprat;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ShareActionProvider;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -28,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
 	private ArrayList<Integer> lesDepts;
 	String login, mdp;
 
+	//prend le host
+	public static String iphost = Configuration.getHost();
+	//prend le path;
+	public static String path = Configuration.getPath();
+
 //region MethodesProtegeesRedefinies
 	/**
 	 * Méthode appelée lors de la création de l'activité
@@ -36,19 +48,48 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Toolbar toolbar=findViewById(R.id.action_settings);
+		setSupportActionBar(toolbar);
 		initialisations();
 	}
+
+	private void setSupportActionBar(Toolbar toolbar) {
+		ActionBar actionBar=getSupportActionBar();
+		actionBar.hide();
+		actionBar.show();
+	}
+
+
 	/**
 	 * Initialise le paramètre menu avec le contenu de la ressource xml menu
 	 * @param menu
 	 * @return true si le menu doit être affiché, false sinon
 	 */
+	private MenuItem mMenuItem;
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		final MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		mMenuItem = menu.findItem(R.id.action_host);
 		return true;
 	}
+
+	@Override
+	public boolean onOptionsItemSelected (MenuItem item)
+	{
+		Intent uneIntention;
+
+		// crée une intention passée à l'activité de classe settings
+		uneIntention = new Intent(MainActivity.this, settings.class);
+		//uneIntention.putExtra(settings.IPHOST, iphost);
+		//uneIntention.putExtra(settings.PATH, path);
+		startActivity(uneIntention);
+
+		return super.onOptionsItemSelected(item);
+	}
+
 //endregion MethodesProtegeesRedefinies
 //region MethodesPrivees
     /**
@@ -168,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
 				startActivity(uneIntention);
 			}
 		}
+
+
 	}
 //endregion ClassesInternesPrivees
 }
