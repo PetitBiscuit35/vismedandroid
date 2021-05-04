@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 	    buttonValider.setEnabled(false);
 
 	    // on affecte un écouteur d'événement clic au bouton Valider
-	    this.buttonValider.setOnClickListener(new ButtonValiderClick());		
+	    this.buttonValider.setOnClickListener(new ButtonValiderClick());
 	}
 //endregion MethodesPrivees
 // region ClassesInternesPrivees
