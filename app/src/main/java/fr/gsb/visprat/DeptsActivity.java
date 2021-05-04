@@ -2,8 +2,6 @@ package fr.gsb.visprat;
 
 import java.util.ArrayList;
 
-import fr.gsb.visprat.dao.PasserelleMedecin;
-
 import android.os.Bundle;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,7 +65,7 @@ public class DeptsActivity extends AppCompatActivity {
 		String login = uneIntention.getStringExtra("login");
 		getSupportActionBar().setTitle(getSupportActionBar().getTitle() + " (" + login + ")");
 
-		listViewDepts = (ListView) findViewById(R.id.listViewDepts);
+		listViewDepts = (ListView) findViewById(R.id.listViewmedicaments);
 		unAdaptateur = new ArrayAdapter<Integer>(DeptsActivity.this, android.R.layout.simple_list_item_1, lesDepts);
 		// 	on associe l'adaptateur au composant ListView
 		listViewDepts.setAdapter(unAdaptateur);
@@ -78,7 +76,7 @@ public class DeptsActivity extends AppCompatActivity {
     /**
      * Classe interne servant d'écouteur de l'événement click sur les éléments de la liste
      */
-    private class ListViewOnItemClick implements AdapterView.OnItemClickListener {
+	class ListViewOnItemClick implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent uneIntention;
