@@ -36,7 +36,6 @@ public class PasserelleMedecin extends Passerelle {
         Integer unNumeroDept;
         try
         {
-            urlMedecins = getUrlHoteWS() + "index.php/medecins";
             urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
             // on prépare une requête http get pour l'URL depts et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
@@ -80,7 +79,6 @@ public class PasserelleMedecin extends Passerelle {
         String uneURL;
         try {
             urlMedecins = getUrlHoteWS() + "index.php/medecins";
-            urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
             uneURL = urlMedecins + "/" + filtreDept + "/" + noDept;
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
@@ -131,7 +129,6 @@ public class PasserelleMedecin extends Passerelle {
         try
         {
             urlMedecins = getUrlHoteWS() + "index.php/medecins";
-            urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
             uneURL = urlMedecins + "/" + leMedecin.getId();
             // on prépare une requête http PUT avec les données à mettre à jour
             HttpURLConnection uneConnexion = prepareHttpRequestWithData(uneURL,"PUT", leVisiteur, laHashMapToUpdate);
