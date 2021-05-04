@@ -12,14 +12,16 @@ import fr.gsb.visprat.R;
 import fr.gsb.visprat.metier.Medecin;
 import fr.gsb.visprat.metier.Visiteur;
 
+import static fr.gsb.visprat.dao.Configuration.getUrlHoteWS;
+
 /**
  * Classe prenant en charge l'appel des web services pour obtenir ou modifier les données
  * concernant les médecins
- * @author sio2slam
+ * @author sio2slamd
  */
 public class PasserelleMedecin extends Passerelle {
-    public static String urlMedecins = Configuration.getUrlHoteWS() + "index.php/medecins";
-    public static String urlDepts = Configuration.getUrlHoteWS() + "index.php/medecins/departement";
+    public static String urlMedecins = getUrlHoteWS() + "index.php/medecins";
+    public static String urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
     public static String filtreDept = "departement";
 
     /**
@@ -34,6 +36,7 @@ public class PasserelleMedecin extends Passerelle {
         Integer unNumeroDept;
         try
         {
+           urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
             // on prépare une requête http get pour l'URL depts et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
 
@@ -75,6 +78,7 @@ public class PasserelleMedecin extends Passerelle {
         Medecin unMedecin;
         String uneURL;
         try {
+            urlMedecins = getUrlHoteWS() + "index.php/medecins";
             uneURL = urlMedecins + "/" + filtreDept + "/" + noDept;
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);

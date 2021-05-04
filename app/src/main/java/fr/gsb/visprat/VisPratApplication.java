@@ -11,6 +11,7 @@ import android.app.Application;
  */
 public class VisPratApplication extends Application {
 	private Visiteur leVisiteur;
+
 	/**
 	 * Fournit le visiteur connecté
 	 * @return Visiteur

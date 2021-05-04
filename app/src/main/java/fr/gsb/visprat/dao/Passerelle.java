@@ -120,7 +120,6 @@ public class Passerelle {
 		return cnx;
 	}
 
-
 	/**
 	 * Prépare une requête http avec les données d'authentification
 	 * @param uri  URL demandée

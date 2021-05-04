@@ -31,6 +31,9 @@
     <string name="hintNom">Durand</string>
     <string name="hintPrenom">Paul</string>
     <string name="hintVille">Rennes</string>
+    <string name="action_share" />
+    <string name="title_activity_settings">Settings</string>
+
 
     <string name="codeStatut">Code Statut </string>
     <string name="msgStatut">Message Statut : </string>
