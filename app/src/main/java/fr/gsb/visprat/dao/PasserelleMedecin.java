@@ -36,6 +36,7 @@ public class PasserelleMedecin extends Passerelle {
         Integer unNumeroDept;
         try
         {
+           urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
             // on prépare une requête http get pour l'URL depts et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
 
@@ -77,6 +78,7 @@ public class PasserelleMedecin extends Passerelle {
         Medecin unMedecin;
         String uneURL;
         try {
+            urlMedecins = getUrlHoteWS() + "index.php/medecins";
             uneURL = urlMedecins + "/" + filtreDept + "/" + noDept;
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
