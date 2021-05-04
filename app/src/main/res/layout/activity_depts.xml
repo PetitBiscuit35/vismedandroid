@@ -6,20 +6,50 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <TextView
-        android:id="@+id/textViewInviteDept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inviteDepts" />
-
-    <ListView
-        android:id="@+id/listViewDepts"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewInviteDept"
-        android:layout_below="@+id/textViewInviteDept"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="22dp" >
-    </ListView>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonMedicament"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/title_activity_medicamments" />
+
+            <Button
+                android:id="@+id/buttonRapportsVisites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/title_activity_rapports_visites" />
+
+            <Button
+                android:id="@+id/buttonAddRapportsVisites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/title_activity_add_rapports_visites" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewInviteDept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inviteDepts" />
+
+        <ListView
+            android:id="@+id/listViewDepts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="22dp"></ListView>
+    </LinearLayout>
 
 </RelativeLayout>

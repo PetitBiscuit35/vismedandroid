@@ -17,6 +17,9 @@
     <string name="msgErrUpdateMedecin">Erreur lors de la modification des données du médecin</string>
     <string name="title_activity_depts">Liste des départements</string>
     <string name="title_activity_medecins">Médecins</string>
+    <string name="title_activity_rapports_visites">Rapports de visite</string>
+    <string name="title_activity_add_rapports_visites">Ajouter Rapport</string>
+    <string name="title_activity_medicamments">Liste Médicamment</string>
     <string name="title_activity_medecin_detail">Détail médecin</string>
 
     <string name="inviteNom">Nom:</string>
