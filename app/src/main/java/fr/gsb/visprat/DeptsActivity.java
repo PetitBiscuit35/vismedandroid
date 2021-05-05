@@ -2,8 +2,6 @@ package fr.gsb.visprat;
 
 import java.util.ArrayList;
 
-import fr.gsb.visprat.dao.PasserelleMedecin;
-
 import android.os.Bundle;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 /**
@@ -20,12 +19,19 @@ import android.widget.ListView;
 public class DeptsActivity extends AppCompatActivity {
 	private ListView listViewDepts;
 	private ArrayList<Integer> lesDepts;
+	private ArrayList<Integer> lesMedicament;
 	private ArrayAdapter<Integer> unAdaptateur;
+
+	//récupération du button avec pour id buttonMedicament
+	private Button buttonMedicament;
+
 	/**
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
 	 */
 	public static final String DEPTS = "depts";
 	public static final String LOGIN = "login";
+	public static final String NODEPOTL = "nodepolt";
+
 
 
 //region MethodesProtegeesRedefinies
@@ -37,7 +43,26 @@ public class DeptsActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_depts);
 		initialisations();
+
+		//bouton medicament
+		this.buttonMedicament = (Button) this.findViewById(R.id.buttonMedicament);
+		// on affecte un écouteur d'événement clic au bouton Valider
+		this.buttonMedicament.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View view) {
+				Intent uneIntention;
+				// crée une intention pour ouvrir l'activité qui sait gérer une liste de Médicament
+				uneIntention = new Intent(DeptsActivity.this, MedicamentActivity.class);
+				startActivity(uneIntention);
+
+
+			}
+		});
 	}
+
+
+
 
     /**
      * Initialise le paramètre menu avec le contenu de la ressource xml menu
@@ -60,8 +85,9 @@ public class DeptsActivity extends AppCompatActivity {
 	private void initialisations() {
 		Intent uneIntention;
 		uneIntention = getIntent();
-
+		
 		lesDepts = uneIntention.getIntegerArrayListExtra("depts");
+
 
 		// Affichage du login connecté
 		String login = uneIntention.getStringExtra("login");
@@ -73,12 +99,14 @@ public class DeptsActivity extends AppCompatActivity {
 		listViewDepts.setAdapter(unAdaptateur);
 		listViewDepts.setOnItemClickListener(new ListViewOnItemClick() );
    	}
+
+
 //endregion MethodesPrivees
 //region ClassesInternesPrivees
     /**
      * Classe interne servant d'écouteur de l'événement click sur les éléments de la liste
      */
-    private class ListViewOnItemClick implements AdapterView.OnItemClickListener {
+	class ListViewOnItemClick implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent uneIntention;
@@ -88,5 +116,7 @@ public class DeptsActivity extends AppCompatActivity {
             DeptsActivity.this.startActivity(uneIntention);
         }
     }
+
+
 //endregion ClassesInternesPrivees
 }
