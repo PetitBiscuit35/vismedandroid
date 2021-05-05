@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textViewIdMedecin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addIdMedecin"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextIdMedecin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewDateVisite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addDateVisite"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextDateVisite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewDateCreaRapport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addDateCreaRapport"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextDateCreaRapport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewBilan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addBilan"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextBilan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewCoefConfiance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addCoefConfiance"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextCoefConfiance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewIdMotifVisite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addIdMotifVisite"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextIdMotifVisite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/buttonAjouter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boutonValider" />
+
+</LinearLayout>

@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * Classe gérant l'interface utilisateur d'une liste de départements
@@ -21,6 +23,7 @@ public class DeptsActivity extends AppCompatActivity {
 	private ListView listViewDepts;
 	private ArrayList<Integer> lesDepts;
 	private ArrayAdapter<Integer> unAdaptateur;
+	private Button AddRapportVisite;
 	/**
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
 	 */
@@ -72,6 +75,9 @@ public class DeptsActivity extends AppCompatActivity {
 		// 	on associe l'adaptateur au composant ListView
 		listViewDepts.setAdapter(unAdaptateur);
 		listViewDepts.setOnItemClickListener(new ListViewOnItemClick() );
+
+		AddRapportVisite = (Button) findViewById(R.id.buttonAddRapportsVisites);
+		AddRapportVisite.setOnClickListener(new ClickBoutonAddRapportVisite());
    	}
 //endregion MethodesPrivees
 //region ClassesInternesPrivees
@@ -88,5 +94,13 @@ public class DeptsActivity extends AppCompatActivity {
             DeptsActivity.this.startActivity(uneIntention);
         }
     }
+
+    private class ClickBoutonAddRapportVisite implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			Intent uneIntention = new Intent(DeptsActivity.this, AddRapportVisiteActivity.class);
+			startActivity(uneIntention);
+		}
+	}
 //endregion ClassesInternesPrivees
 }

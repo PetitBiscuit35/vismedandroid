@@ -18,7 +18,7 @@
     <string name="title_activity_depts">Liste des départements</string>
     <string name="title_activity_medecins">Médecins</string>
     <string name="title_activity_rapports_visites">Rapports de visite</string>
-    <string name="title_activity_add_rapports_visites">Ajouter Rapport</string>
+    <string name="title_activity_add_rapports_visites">Ajouter rapport de visite</string>
     <string name="title_activity_medicamments">Liste Médicamment</string>
     <string name="title_activity_medecin_detail">Détail médecin</string>
 
@@ -37,7 +37,6 @@
     <string name="action_share" />
     <string name="title_activity_settings">Settings</string>
 
-
     <string name="codeStatut">Code Statut </string>
     <string name="msgStatut">Message Statut : </string>
     <string name="data">Data : </string>
@@ -47,5 +46,12 @@
     <string name="errException">Erreur exception : </string>
     <string name="aucuneDonnees">Aucune donnée modifiée</string>
     <string name="msgErrRecupMedecins">Erreur récupération données sur les médecins : </string>
+
+    <string name="addIdMedecin">ID Médecin</string>
+    <string name="addDateVisite">Date de la visite</string>
+    <string name="addDateCreaRapport">Date de la création du rapport</string>
+    <string name="addBilan">Bilan</string>
+    <string name="addCoefConfiance">Coéficient de confiance</string>
+    <string name="addIdMotifVisite">ID Motif de la visite</string>
 
 </resources>
