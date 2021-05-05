@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.net.HttpURLConnection;
+import java.util.HashMap;
+
 import fr.gsb.visprat.metier.Medecin;
+
+import static fr.gsb.visprat.dao.Configuration.getUrlHoteWS;
 
 public class AddRapportVisiteActivity extends AppCompatActivity {
     private EditText editTextIdMedecin, editTextDateVisite, editTextDateCreaRapport, editTextBilan, editTextCoefConfiance, editTextIdMotifVisite;
@@ -32,6 +39,7 @@ public class AddRapportVisiteActivity extends AppCompatActivity {
         // Désactivation du bouton ajouter
         buttonAjouter = (Button) findViewById(R.id.buttonAjouter);
         buttonAjouter.setEnabled(false);
+        buttonAjouter.setOnClickListener(new OnButtonClick());
 
         // Ecouteurs
         editTextIdMedecin.addTextChangedListener(new CheckIfEmpty());
@@ -57,6 +65,15 @@ public class AddRapportVisiteActivity extends AppCompatActivity {
         }
         @Override
         public void afterTextChanged(Editable editable) { }
+    }
+
+    private class OnButtonClick implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            String uneURL = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
+
+            Toast.makeText(AddRapportVisiteActivity.this, R.string.rapportAjoute, Toast.LENGTH_LONG).show();
+        }
     }
 }
 
