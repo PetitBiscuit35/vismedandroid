@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
 				uneIntention = new Intent(MainActivity.this, DeptsActivity.class);
 				uneIntention.putExtra(DeptsActivity.LOGIN, login);
 				uneIntention.putExtra(DeptsActivity.DEPTS, lesDepts);
+				// uneIntention.putExtra(DeptsActivity.IDVISITEUR, idVisiteur);
 				startActivity(uneIntention);
 			}
 		}
