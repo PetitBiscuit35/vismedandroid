@@ -6,6 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
+<<<<<<< HEAD
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,5 +52,22 @@
             android:layout_marginLeft="18dp"
             android:layout_marginTop="22dp"></ListView>
     </LinearLayout>
+=======
+    <TextView
+        android:id="@+id/textViewInvitemedicaments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inviteDepts" />
+
+    <ListView
+        android:id="@+id/listViewmedicaments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewInvitemedicaments"
+        android:layout_below="@+id/textViewInvitemedicaments"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="22dp" >
+    </ListView>
+>>>>>>> c703a09597a0e2915c167ed7cddb66bf06f84f42
 
 </RelativeLayout>

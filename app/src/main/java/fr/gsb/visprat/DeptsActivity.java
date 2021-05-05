@@ -93,7 +93,7 @@ public class DeptsActivity extends AppCompatActivity {
 		String login = uneIntention.getStringExtra("login");
 		getSupportActionBar().setTitle(getSupportActionBar().getTitle() + " (" + login + ")");
 
-		listViewDepts = (ListView) findViewById(R.id.listViewDepts);
+		listViewDepts = (ListView) findViewById(R.id.listViewmedicaments);
 		unAdaptateur = new ArrayAdapter<Integer>(DeptsActivity.this, android.R.layout.simple_list_item_1, lesDepts);
 		// 	on associe l'adaptateur au composant ListView
 		listViewDepts.setAdapter(unAdaptateur);
