@@ -3,6 +3,7 @@ package fr.gsb.visprat;
 import java.util.ArrayList;
 
 import fr.gsb.visprat.dao.PasserelleMedecin;
+import fr.gsb.visprat.dao.PasserelleRapportVisite;
 import fr.gsb.visprat.metier.Medecin;
 import fr.gsb.visprat.metier.Rapport_visite;
 
@@ -71,6 +72,7 @@ public class RapportVisiteActivity extends AppCompatActivity {
     private void initialisations() {
         textViewInviteRapportsVisites = (TextView) findViewById(R.id.textViewInviteMedecins);
         listViewRapportsVisites = (ListView) findViewById(R.id.listViewRapportsVisites);
+        new RapportsVisitesGet().execute();
         // listViewRapportsVisites.setOnItemClickListener(new ListViewOnItemClick());
     }
 //endregion MethodesPrivees
@@ -101,20 +103,20 @@ public class RapportVisiteActivity extends AppCompatActivity {
      * TypeParam3 : Object - type de paramètre ArrayList<Medecin> ou Exception
      * @see AsyncTask
      */
-    private class MedecinsGet extends AsyncTask<String, Void, Object> {
+    private class RapportsVisitesGet extends AsyncTask<String, Void, Object> {
         /**
          * Permet de lancer l'exécution de la tache longue
          * ici, on demande les médecins d'un département donné
          */
         @Override
         protected Object doInBackground(String... params) {
-            ArrayList<Medecin> lesDonnees;
+            ArrayList<Rapport_visite> lesDonnees;
             VisPratApplication monAppli;
-            monAppli = (VisPratApplication) MedecinsActivity.this.getApplication();
+            monAppli = (VisPratApplication) RapportVisiteActivity.this.getApplication();
             // cette méthode permet de lancer l'exécution de la tache longue
             // ici, on demande les informations de disponibilité d'une station à partir de son numéro
             try {
-                lesDonnees = PasserelleMedecin.getLesMedecins(Integer.parseInt(params[0]), monAppli.getVisiteur());
+                lesDonnees = PasserelleRapportVisite.getLesRapportsVisites(monAppli.getVisiteur());
             }
             catch (Exception ex) {
                 return ex;
@@ -133,13 +135,13 @@ public class RapportVisiteActivity extends AppCompatActivity {
             // ici, on teste le type de résultat, exception ou liste
             if ( result instanceof Exception ) {
                 Exception ex = (Exception) result;
-                Toast.makeText(MedecinsActivity.this, R.string.msgErrRecupMedecins + ex.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(RapportVisiteActivity.this, "Erreur récupération des rapports de visites" + ex.getMessage(), Toast.LENGTH_LONG).show();
             }
             else {
-                lesMedecins = (ArrayList<Medecin>) result;
-                unAdaptateur = new ArrayAdapter<Medecin>(MedecinsActivity.this, android.R.layout.simple_list_item_1, lesMedecins);
+                lesRapportsVisites = (ArrayList<Rapport_visite>) result;
+                unAdaptateur = new ArrayAdapter<Rapport_visite>(RapportVisiteActivity.this, android.R.layout.simple_list_item_1, lesRapportsVisites);
                 // on associe l'adaptateur au composant ListView
-                listViewMedecins.setAdapter(unAdaptateur);
+                listViewRapportsVisites.setAdapter(unAdaptateur);
             }
         }
     }

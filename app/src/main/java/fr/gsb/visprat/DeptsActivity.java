@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 /**
@@ -21,6 +22,7 @@ public class DeptsActivity extends AppCompatActivity {
 	private ListView listViewDepts;
 	private ArrayList<Integer> lesDepts;
 	private ArrayAdapter<Integer> unAdaptateur;
+	private Button  buttonRapportsVisites;
 	/**
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
 	 */
@@ -37,6 +39,18 @@ public class DeptsActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_depts);
 		initialisations();
+
+		// boutton Rapport de visite
+		this.buttonRapportsVisites = (Button) this.findViewById(R.id.buttonRapportsVisites);
+		this.buttonRapportsVisites.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent uneIntention;
+
+				uneIntention = new Intent(DeptsActivity.this, RapportVisiteActivity.class);
+				startActivity(uneIntention);
+			}
+		});
 	}
 
     /**

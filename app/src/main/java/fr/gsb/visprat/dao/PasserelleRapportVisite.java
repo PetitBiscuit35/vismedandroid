@@ -26,19 +26,19 @@ public class PasserelleRapportVisite extends Passerelle {
 
     /**
      * Fournit la liste des médecins résidant dans le département dont le numéro est spécifié
-     * @param noDept
      * @param leVisiteur visiteur connecté
      * @return ArrayList<Medecin> liste des médecins
      * @throws Exception dans le cas de pb de communication, d'erreur d'authentification, ....
      */
-    public static ArrayList<Rapport_visite> getLesRapportsVisites(int noDept, Visiteur leVisiteur) throws Exception {
+    public static ArrayList<Rapport_visite> getLesRapportsVisites(Visiteur leVisiteur) throws Exception {
         ArrayList<Rapport_visite> lesRapportsVisites = null;
         Rapport_visite unRapportVisite;
         String uneURL;
         try {
-            urlRapportsVisites = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
+            urlRapportsVisites = getUrlHoteWS() + "index.php/visiteurs";
+            uneURL = urlRapportsVisites + "/a17/rapports";
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
-            HttpURLConnection uneRequete = prepareHttpRequestAuth(urlRapportsVisites, "GET", leVisiteur);
+            HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
             // on récupère le résultat JSON, réponse du serveur http à cette requête
             JSONObject unObjetJSON = loadResultJSON(uneRequete);
 
@@ -122,16 +122,16 @@ public class PasserelleRapportVisite extends Passerelle {
         String uneDateVisite, uneDateCreaRapport, unBilan;
         Rapport_visite unRapportVisite;
 
-        unIdVisiteur = unObjetJSON.getInt("idVisiteur");
+        // unIdVisiteur = unObjetJSON.getInt("idVisiteur");
         unId = unObjetJSON.getInt("id");
         unIdMedecin = unObjetJSON.getInt("idMedecin");
         uneDateVisite = unObjetJSON.getString("dateVisite");
-        uneDateCreaRapport = unObjetJSON.getString("dateCreaRapport");
-        unBilan = unObjetJSON.getString("bilan");
-        unCoefConfiance = unObjetJSON.getInt("ccoefConfiance");
+        // uneDateCreaRapport = unObjetJSON.getString("dateCreaRapport");
+        // unBilan = unObjetJSON.getString("bilan");
+        // unCoefConfiance = unObjetJSON.getInt("coefConfiance");
         unIdMotifVisite = unObjetJSON.getInt("idMotifVisite");
 
-        unRapportVisite = new Rapport_visite(unIdVisiteur, unId, unIdMedecin, uneDateVisite, uneDateCreaRapport, unBilan, unCoefConfiance, unIdMotifVisite);
+        unRapportVisite = new Rapport_visite(unId, unIdMedecin, uneDateVisite, unIdMotifVisite);
         return unRapportVisite;
     }
 }

@@ -36,14 +36,14 @@ public class Rapport_visite implements Serializable {
     /**
      * Instancie un rapport de visite avec idVisiteur, id, idMedecin, dateVisite, dateCreaRapport, coefConfiance, idMotifVisite
      */
-    public Rapport_visite(int unIdVisiteur, int unId, int unIdMedecin, String uneDateVisite, String uneDateCreaRapport, int unCoefConfiance, int unIdMotifVisite) {
-        this.idVisiteur = unIdVisiteur;
+    public Rapport_visite(int unId, int unIdMedecin, String uneDateVisite, int unIdMotifVisite) {
+        this.idVisiteur = 0;
         this.id = unId;
         this.idMedecin = unIdMedecin;
         this.dateVisite = uneDateVisite;
-        this.dateCreaRapport = uneDateCreaRapport;
-        this.bilan = "RAS";
-        this.coefConfiance = unCoefConfiance;
+        this.dateCreaRapport = " ";
+        this.bilan = " ";
+        this.coefConfiance = 0;
         this.idMotifVisite = unIdMotifVisite;
     }
     /**
