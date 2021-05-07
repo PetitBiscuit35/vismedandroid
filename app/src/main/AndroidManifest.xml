@@ -39,6 +39,10 @@
             android:name="fr.gsb.visprat.AddRapportVisiteActivity"
             android:label="@string/title_activity_add_rapports_visites" >
         </activity>
+        <activity
+            android:name="fr.gsb.visprat.RapportVisiteActivity"
+            android:label="Rapports de visites">
+        </activity>
 
     </application>
 </manifest>

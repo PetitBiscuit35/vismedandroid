@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import fr.gsb.visprat.R;
 import fr.gsb.visprat.metier.Medecin;
+import fr.gsb.visprat.metier.Rapport_visite;
 import fr.gsb.visprat.metier.Visiteur;
 
 import static fr.gsb.visprat.dao.Configuration.getUrlHoteWS;
@@ -19,74 +20,29 @@ import static fr.gsb.visprat.dao.Configuration.getUrlHoteWS;
  * concernant les médecins
  * @author sio2slamd
  */
-public class PasserelleMedecin extends Passerelle {
-    public static String urlMedecins = getUrlHoteWS() + "index.php/medecins";
-    public static String urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
-    public static String filtreDept = "departement";
+public class PasserelleRapportVisite extends Passerelle {
+    public static String urlRapportsVisites = getUrlHoteWS() + "index.php/visiteurs/a17/rapports"; // /visiteurs/IdVisiteur/rapports
 
-    /**
-     * Fournit la liste des départements
-     * @param login login nécessaire à l'authentification
-     * @param motPasse mot de passe nécessaire à l'authentification
-     * @return ArrayList<Integer> liste des départements
-     * @throws Exception dans le cas de pb de communication, d'erreur d'authentification, ....
-     */
-    public static ArrayList<Integer> getLesDepts(String login, String motPasse) throws Exception{
-        ArrayList<Integer> lesDepts;
-        Integer unNumeroDept;
-        try
-        {
-           urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
 
-            // on prépare une requête http get pour l'URL depts et les données d'authentification
-            HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
-
-            // on récupère le résultat JSON, réponse du serveur http à cette requête
-            JSONObject unObjetJSON = loadResultJSON(uneRequete);
-
-            JSONArray lesDeptsJS = unObjetJSON.getJSONArray("data");
-
-			/* Exemple de données obtenues pour le tableau de clé data :
-					{"data" : [ {noDept:"1"}, {"noDept":2}, {noDept:"3"}, .... {noDept:"98"},
-			*/
-            // création d'un objet ArrayList
-            lesDepts = new ArrayList<Integer> ();
-            // parcours de la liste des noeuds <dept>
-            for (int i = 0 ; i < lesDeptsJS.length() ; i++)
-            {	// création de l'élement courant à chaque tour de boucle
-                JSONObject courant = lesDeptsJS.getJSONObject(i);
-                // lecture de la balise <name>
-                unNumeroDept = getUnNumeroDeptFromJSONObject(courant);
-                // ajoute le nom de district à l'objet lesNomsDeDistrict
-                lesDepts.add(unNumeroDept);
-            }
-            return lesDepts;
-        }
-        catch (Exception ex) {
-            Log.e("Passerelle", R.string.errException + ex.toString());
-            throw ex;
-        }
-    }
     /**
      * Fournit la liste des médecins résidant dans le département dont le numéro est spécifié
-     * @param noDept
      * @param leVisiteur visiteur connecté
      * @return ArrayList<Medecin> liste des médecins
      * @throws Exception dans le cas de pb de communication, d'erreur d'authentification, ....
      */
-    public static ArrayList<Medecin> getLesMedecins(int noDept, Visiteur leVisiteur) throws Exception {
-        ArrayList<Medecin> lesMedecins = null;
-        Medecin unMedecin;
+    public static ArrayList<Rapport_visite> getLesRapportsVisites(Visiteur leVisiteur) throws Exception {
+        ArrayList<Rapport_visite> lesRapportsVisites = null;
+        Rapport_visite unRapportVisite;
         String uneURL;
         try {
-            urlMedecins = getUrlHoteWS() + "index.php/medecins";
-            uneURL = urlMedecins + "/" + filtreDept + "/" + noDept;
+            urlRapportsVisites = getUrlHoteWS() + "index.php/visiteurs";
+            uneURL = urlRapportsVisites + "/a17/rapports";
             // on prépare une requête http get pour l'URL medecins et les données d'authentification
             HttpURLConnection uneRequete = prepareHttpRequestAuth(uneURL, "GET", leVisiteur);
             // on récupère le résultat JSON, réponse du serveur http à cette requête
             JSONObject unObjetJSON = loadResultJSON(uneRequete);
 
-            JSONArray lesMedecinsJS = unObjetJSON.getJSONArray("data");
+            JSONArray lesRapportsVisitesJS = unObjetJSON.getJSONArray("data");
 
 			/* Exemple de données obtenues pour le tableau de clé medecins :
 					{"data" : [
@@ -97,23 +53,23 @@ public class PasserelleMedecin extends Passerelle {
 				    }
 			*/
             // création d'un objet ArrayList en vue de contenir les numéros de départements
-            lesMedecins = new ArrayList<Medecin> ();
+            lesRapportsVisites = new ArrayList<Rapport_visite> ();
             // parcours de la liste des noeuds <medecin>
-            for (int i = 0 ; i < lesMedecinsJS.length() ; i++) {
+            for (int i = 0 ; i < lesRapportsVisitesJS.length() ; i++) {
                 // création de l'élément courant à chaque tour de boucle
-                JSONObject courant = lesMedecinsJS.getJSONObject(i);
+                JSONObject courant = lesRapportsVisitesJS.getJSONObject(i);
                 // constitution du médecin à partir de l'objet JSON courant
-                unMedecin = getMedecinFromJSONObject(courant);
+                unRapportVisite = getRapportVisiteFromJSONObject(courant);
                 // ajoute le médecin à la collection des médecins
-                lesMedecins.add(unMedecin);
+                lesRapportsVisites.add(unRapportVisite);
             }
         }
 
-		catch (Exception ex) {
+        catch (Exception ex) {
             Log.e("Passerelle", R.string.errException + ex.toString());
             throw ex;
         }
-        return lesMedecins;
+        return lesRapportsVisites;
     }
 
     /**
@@ -125,6 +81,7 @@ public class PasserelleMedecin extends Passerelle {
      * @return Medecin le médecin avec ses données modifiées
      * @throws Exception dans le cas de pb de communication, d'erreur d'authentification, ....
      */
+    /*
     public static Medecin updateMedecin(Visiteur leVisiteur, Medecin leMedecin, HashMap<String, String> laHashMapToUpdate) throws Exception {
         String uneURL;
         try
@@ -152,7 +109,7 @@ public class PasserelleMedecin extends Passerelle {
             throw ex;
         }
         return leMedecin;
-    }
+    } */
 
     /**
      * Instancie un médecin à partir d'un objet JSON contenant tous les éléments caractéristiques d'un médecin
@@ -160,32 +117,21 @@ public class PasserelleMedecin extends Passerelle {
      * @return Medecin le médecin construit à partir des données JSON
      * @throws Exception dans le cas d'erreur de format JSON ....
      */
-    private static Medecin getMedecinFromJSONObject(JSONObject unObjetJSON) throws Exception {
-        Integer unId;
-        String unNom, unPrenom, uneVille, uneAdresse, unCodePostal, unTel, unEmail, uneSpecComp;
-        Medecin unMedecin;
+    private static Rapport_visite getRapportVisiteFromJSONObject(JSONObject unObjetJSON) throws Exception {
+        Integer unIdVisiteur, unId, unIdMedecin, unCoefConfiance, unIdMotifVisite;
+        String uneDateVisite, uneDateCreaRapport, unBilan;
+        Rapport_visite unRapportVisite;
 
+        // unIdVisiteur = unObjetJSON.getInt("idVisiteur");
         unId = unObjetJSON.getInt("id");
-        unNom = unObjetJSON.getString("nom");
-        unPrenom = unObjetJSON.getString("prenom");
-        uneAdresse = unObjetJSON.getString("adresse");
-        uneVille = unObjetJSON.getString("ville");
-        unCodePostal = unObjetJSON.getString("codePostal");
-        unTel = unObjetJSON.getString("tel");
-        unEmail = unObjetJSON.getString("email");
-        uneSpecComp = unObjetJSON.getString("specialiteComplementaire");
-        unMedecin = new Medecin (unId, unNom, unPrenom, uneAdresse, unCodePostal, uneVille, unTel, unEmail, uneSpecComp);
-        return unMedecin;
-    }
-    /**
-     * Instancie un département à partir d'un élément portant noDept comme nom de balise
-     * @param unObjetJSON
-     * @return Integer
-     * @throws Exception dans le cas d'erreur de format JSON ....
-     */
-    private static Integer getUnNumeroDeptFromJSONObject(JSONObject unObjetJSON) throws Exception {
-        Integer num;
-        num = (Integer) Integer.parseInt(unObjetJSON.getString("noDepts"));
-        return num;
+        unIdMedecin = unObjetJSON.getInt("idMedecin");
+        uneDateVisite = unObjetJSON.getString("dateVisite");
+        // uneDateCreaRapport = unObjetJSON.getString("dateCreaRapport");
+        // unBilan = unObjetJSON.getString("bilan");
+        // unCoefConfiance = unObjetJSON.getInt("coefConfiance");
+        unIdMotifVisite = unObjetJSON.getInt("idMotifVisite");
+
+        unRapportVisite = new Rapport_visite(unId, unIdMedecin, uneDateVisite, unIdMotifVisite);
+        return unRapportVisite;
     }
 }

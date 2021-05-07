@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 	    buttonValider.setEnabled(false);
 
 	    // on affecte un écouteur d'événement clic au bouton Valider
-	    this.buttonValider.setOnClickListener(new ButtonValiderClick());		
+	    this.buttonValider.setOnClickListener(new ButtonValiderClick());
 	}
 //endregion MethodesPrivees
 // region ClassesInternesPrivees
@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
 				uneIntention = new Intent(MainActivity.this, DeptsActivity.class);
 				uneIntention.putExtra(DeptsActivity.LOGIN, login);
 				uneIntention.putExtra(DeptsActivity.DEPTS, lesDepts);
+				// uneIntention.putExtra(DeptsActivity.IDVISITEUR, idVisiteur);
 				startActivity(uneIntention);
 			}
 		}
