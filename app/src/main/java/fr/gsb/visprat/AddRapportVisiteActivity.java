@@ -16,12 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import fr.gsb.visprat.metier.Medecin;
 
 import static fr.gsb.visprat.dao.Configuration.getUrlHoteWS;
+import static fr.gsb.visprat.dao.PasserelleRapportVisite.AddRapportVisite;
 
 public class AddRapportVisiteActivity extends AppCompatActivity {
     private EditText editTextIdMedecin, editTextDateVisite, editTextDateCreaRapport, editTextBilan, editTextCoefConfiance, editTextIdMotifVisite;
@@ -75,22 +77,10 @@ public class AddRapportVisiteActivity extends AppCompatActivity {
     private class OnButtonClick implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            String uneURL = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
-
-
+            // String uneURL = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
             Toast.makeText(AddRapportVisiteActivity.this, R.string.rapportAjoute, Toast.LENGTH_LONG).show();
-
             try {
-                URL url = new URL(getUrlHoteWS() + "index.php/visiteurs/a17/rapports");
-                String postData = "idMedecin=18&dateVisite=2021-21-21&dateCreaRapport=2019-01-02&bilan=RAS&coefConfiance=4&idMotifVisite=2";
-
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
-                conn.setDoOutput(true);
-                conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                conn.setRequestProperty("Content-Length", Integer.toString(postData.length()));
-                conn.setUseCaches(false);
-
+                AddRapportVisite();
             } catch (Exception e) {
                 e.printStackTrace();
             }
