@@ -76,7 +76,14 @@ public class AddRapportVisiteActivity extends AppCompatActivity {
         public void onClick(View view) {
             String url = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
             Log.e("PasserelleRapportVisite", "Erreur Rapport Visite" + url);
-            new CreateRapportVisite();
+
+            try { new CreateRapportVisite(); }
+            catch(Exception ex)
+            {
+
+            }
+
+            try { AddRapportVisite();} catch (Exception e) { }
         }
     }
 
@@ -92,7 +99,7 @@ public class AddRapportVisiteActivity extends AppCompatActivity {
                 Log.e("PasserelleRapportVisite", "Erreur Rapport Visite");
                 Toast.makeText(AddRapportVisiteActivity.this, R.string.rapportAjoute, Toast.LENGTH_LONG).show();
             } catch (Exception e) {
-                e.printStackTrace();
+
             }
             return "Envoyé";
         }

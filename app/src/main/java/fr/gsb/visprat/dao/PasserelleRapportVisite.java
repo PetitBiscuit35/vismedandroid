@@ -4,11 +4,16 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -19,6 +24,7 @@ import fr.gsb.visprat.metier.Medecin;
 import fr.gsb.visprat.metier.Rapport_visite;
 import fr.gsb.visprat.metier.Visiteur;
 
+import static android.content.ContentValues.TAG;
 import static fr.gsb.visprat.dao.Configuration.getUrlHoteWS;
 
 /**
@@ -144,6 +150,8 @@ public class PasserelleRapportVisite extends Passerelle {
     public static void AddRapportVisite() throws Exception {
 
             String url = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
+            Log.d(TAG, "API CALL: POST "+ url);
+
             String idMedecin = "19";
             String dateVisite = "2020-11-11";
             String dateCreaRapport = "2019-01-02";
@@ -151,38 +159,55 @@ public class PasserelleRapportVisite extends Passerelle {
             String coefConfiance = "4";
             String idMotifVisite = "2";
 
-            String urlParameters = "idMedecin=" + idMedecin;
-            urlParameters += "&dateVisite=" + dateVisite;
-            urlParameters += "&dateCreaRapport=" + dateCreaRapport;
-            urlParameters += "&bilan=" + bilan;
-            urlParameters += "&coefConfiance=" + coefConfiance;
-            urlParameters += "&idMotifVisite=" + idMotifVisite;
+            try {
+                /*
+                URL urlObj = new URL(url);
+                HttpURLConnection httpCon = (HttpURLConnection) urlObj.openConnection();
+                HttpsTrustManager.allowAllSSL();
 
-            Charset UTF8_CHARSET = Charset.forName("UTF-8");
-            byte[] postData       = urlParameters.getBytes(UTF8_CHARSET);
-            int    postDataLength = postData.length;
+                String auth = "dandre:oppg5";
+                byte[] encodedBytes = android.util.Base64.encode(auth.getBytes(), android.util.Base64.DEFAULT);
+                // String authHeaderValue = "Basic " + new String(encodedBytes);
+                String authHeaderValue = "Basic ZGFuZHJlOm9wcGc1";
+                httpCon.setRequestProperty("Authorization", authHeaderValue); */
 
-            URL urlObj = new URL(url);
-            HttpURLConnection httpCon = (HttpURLConnection) urlObj.openConnection();
-            HttpsTrustManager.allowAllSSL();
+                String data = URLEncoder.encode("idMedecin", "UTF-8")
+                        + "=" + URLEncoder.encode(idMedecin, "UTF-8");
 
-            String auth = "dandre:oppg5";
-            byte[] encodedBytes = android.util.Base64.encode(auth.getBytes(), android.util.Base64.DEFAULT);
-            // String authHeaderValue = "Basic " + new String(encodedBytes);
-            String authHeaderValue = "Basic ZGFuZHJlOm9wcGc1";
-            httpCon.setRequestProperty("Authorization", authHeaderValue);
+                data += "&" + URLEncoder.encode("dateVisite", "UTF-8") + "="
+                        + URLEncoder.encode(dateVisite, "UTF-8");
 
-            httpCon.setDoOutput(true);
-            httpCon.setRequestMethod("POST");
-            httpCon.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded");
-            httpCon.setRequestProperty( "charset", "utf-8");
-            httpCon.setRequestProperty( "Content-Length", Integer.toString(postDataLength));
-            httpCon.setUseCaches(false);
+                data += "&" + URLEncoder.encode("dateCreaRapport", "UTF-8")
+                        + "=" + URLEncoder.encode(dateCreaRapport, "UTF-8");
 
-            DataOutputStream wr = new DataOutputStream(httpCon.getOutputStream());
-            wr.write(postData);
-            wr.close();
+                data += "&" + URLEncoder.encode("bilan", "UTF-8")
+                        + "=" + URLEncoder.encode(bilan, "UTF-8");
 
-            Log.e("PasserelleRapportVisite", "OK" + url + urlParameters);
+                data += "&" + URLEncoder.encode("coefConfiance", "UTF-8")
+                        + "=" + URLEncoder.encode(coefConfiance, "UTF-8");
+
+                data += "&" + URLEncoder.encode("idMotifVisite", "UTF-8")
+                        + "=" + URLEncoder.encode(idMotifVisite, "UTF-8");
+
+                URL urlObj = new URL(url);
+                HttpURLConnection  conn = (HttpURLConnection) urlObj.openConnection();
+
+                conn.setRequestMethod("POST");
+
+                String authHeaderValue = "Basic ZGFuZHJlOm9wcGc1";
+                conn.setRequestProperty("Authorization", authHeaderValue);
+
+                conn.setRequestProperty("Accept-Charset", "UTF-8");
+
+                conn.setDoOutput(true);
+
+                    OutputStream outputPost = new BufferedOutputStream(conn.getOutputStream());
+                    outputPost.write(data.getBytes("UTF-8"));
+            }
+            catch (Exception ex) {
+                Log.e("Passerelle", R.string.errException + ex.toString());
+                throw ex;
+            }
+
     }
 }
