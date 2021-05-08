@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -140,7 +142,7 @@ public class PasserelleRapportVisite extends Passerelle {
     }
 
     public static void AddRapportVisite() throws Exception {
-        try {
+
             String url = getUrlHoteWS() + "index.php/visiteurs/a17/rapports";
             String idMedecin = "19";
             String dateVisite = "2020-11-11";
@@ -149,35 +151,38 @@ public class PasserelleRapportVisite extends Passerelle {
             String coefConfiance = "4";
             String idMotifVisite = "2";
 
+            String urlParameters = "idMedecin=" + idMedecin;
+            urlParameters += "&dateVisite=" + dateVisite;
+            urlParameters += "&dateCreaRapport=" + dateCreaRapport;
+            urlParameters += "&bilan=" + bilan;
+            urlParameters += "&coefConfiance=" + coefConfiance;
+            urlParameters += "&idMotifVisite=" + idMotifVisite;
+
+            Charset UTF8_CHARSET = Charset.forName("UTF-8");
+            byte[] postData       = urlParameters.getBytes(UTF8_CHARSET);
+            int    postDataLength = postData.length;
+
             URL urlObj = new URL(url);
             HttpURLConnection httpCon = (HttpURLConnection) urlObj.openConnection();
-
-            httpCon.setRequestMethod("POST");
-            httpCon.setDoOutput(true);
             HttpsTrustManager.allowAllSSL();
 
             String auth = "dandre:oppg5";
             byte[] encodedBytes = android.util.Base64.encode(auth.getBytes(), android.util.Base64.DEFAULT);
-            String authHeaderValue = "Basic " + new String(encodedBytes);
+            // String authHeaderValue = "Basic " + new String(encodedBytes);
+            String authHeaderValue = "Basic ZGFuZHJlOm9wcGc1";
             httpCon.setRequestProperty("Authorization", authHeaderValue);
 
-            String parameters = "idMedecin=" + idMedecin;
-            parameters += "dateVisite=" + dateVisite;
-            parameters += "dateCreaRapport=" + dateCreaRapport;
-            parameters += "bilan=" + bilan;
-            parameters += "coefConfiance=" + coefConfiance;
-            parameters += "idMotifVisite=" + idMotifVisite;
-
             httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            httpCon.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded");
+            httpCon.setRequestProperty( "charset", "utf-8");
+            httpCon.setRequestProperty( "Content-Length", Integer.toString(postDataLength));
+            httpCon.setUseCaches(false);
+
             DataOutputStream wr = new DataOutputStream(httpCon.getOutputStream());
-            wr.writeBytes(parameters);
-            wr.flush();
+            wr.write(postData);
             wr.close();
 
-        } catch (Exception ex) {
-            Log.e("Passerelle", "Erreur Rapport Visite" + ex.toString());
-            throw ex;
-        }
-
+            Log.e("PasserelleRapportVisite", "OK" + url + urlParameters);
     }
 }
