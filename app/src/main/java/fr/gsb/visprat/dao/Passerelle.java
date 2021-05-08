@@ -109,7 +109,6 @@ public class Passerelle {
 	protected static HttpURLConnection prepareHttpRequestAuth(String uri, String method, String login, String motPasse)  throws Exception {
 		URL url = new URL(uri);
 		HttpURLConnection cnx = (HttpURLConnection) url.openConnection();
-		HttpsTrustManager.allowAllSSL();
 		cnx.setRequestMethod(method);
 		// ajoute les données d'authentification dans le champ d'entête Authorization
 		String auth = login + ":" + motPasse;

@@ -39,6 +39,7 @@ public class PasserelleMedecin extends Passerelle {
            urlDepts = getUrlHoteWS() + "index.php/medecins/departement/";
 
             // on prépare une requête http get pour l'URL depts et les données d'authentification
+            HttpsTrustManager.allowAllSSL();
             HttpURLConnection uneRequete = prepareHttpRequestAuth(urlDepts, "GET", login, motPasse);
 
             // on récupère le résultat JSON, réponse du serveur http à cette requête
