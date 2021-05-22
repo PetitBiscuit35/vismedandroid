@@ -11,6 +11,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import fr.gsb.visprat.dao.PasserelleMedicament;
 
 /**
  * Classe gérant l'interface utilisateur d'une liste de départements
@@ -23,7 +24,7 @@ public class MedicamentsActivity extends AppCompatActivity {
 	/**
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
 	 */
-	public static final String DEPTS = "depts";
+	public static final String LESMEDICAMENTS = "lesMedicaments";
 	public static final String LOGIN = "login";
 
 
@@ -37,17 +38,29 @@ public class MedicamentsActivity extends AppCompatActivity {
 		Intent uneIntention;
 		uneIntention = getIntent();
 
-		//lesDepts = uneIntention.getIntegerArrayListExtra("depts");
+		lesMedicaments = uneIntention.getIntegerArrayListExtra("lesmedicaments");
+
+
 
 		// Affichage du login connecté
 		String login = uneIntention.getStringExtra("login");
 		getSupportActionBar().setTitle(getSupportActionBar().getTitle() + " (" + login + ")");
 
-		listViewmedicaments = (ListView) findViewById(R.id.listViewmedicaments);
-		//unAdaptateur = new ArrayAdapter<Integer>(MedicamentsActivity.this, android.R.layout.simple_list_item_1, lesDepts);
+
+		listViewmedicaments = (ListView) findViewById(R.id.listViewMedicaments);
+		unAdaptateur = new ArrayAdapter<Integer>(MedicamentsActivity.this, android.R.layout.simple_list_item_1, lesMedicaments);
 		// 	on associe l'adaptateur au composant ListView
 		listViewmedicaments.setAdapter(unAdaptateur);
-		//listViewmedicaments.setOnItemClickListener(new MedecinsActivity().ListViewOnItemClick() );
+
+//		listViewDepts = (ListView) findViewById(R.id.listViewDepts);
+//		unAdaptateur = new ArrayAdapter<Integer>(DeptsActivity.this, android.R.layout.simple_list_item_1, lesDepts);
+//		// 	on associe l'adaptateur au composant ListView
+//		listViewDepts.setAdapter(unAdaptateur);
 	}
+
+
+
 //endregion ClassesInternesPrivees
 }
+
+

@@ -12,22 +12,14 @@
         android:layout_height="wrap_content"
         android:text="médicaments" />
 
-<<<<<<< HEAD
+
 
     <ListView
         android:id="@+id/listViewMedicaments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-=======
-    <ListView
-        android:id="@+id/listViewmedicaments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewInvitemedicaments"
         android:layout_below="@+id/textViewInvitemedicaments"
->>>>>>> c703a09597a0e2915c167ed7cddb66bf06f84f42
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="22dp" >
-    </ListView>
+    />
 
 </RelativeLayout>

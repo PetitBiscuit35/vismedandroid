@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 	private ArrayList<Integer> lesDepts;
 	String login, mdp;
 
+	//récupération du button avec pour id buttonMedicament
+	private Button buttonMedicament;
+
 	//prend le host
 	public static String iphost = Configuration.getHost();
 	//prend le path;
@@ -196,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 				// crée une intention passée à l'activité de classe DeptsActivity
 				uneIntention = new Intent(MainActivity.this, DeptsActivity.class);
 				uneIntention.putExtra(DeptsActivity.LOGIN, login);
+				uneIntention.putExtra(DeptsActivity.MDP, mdp);
 				uneIntention.putExtra(DeptsActivity.DEPTS, lesDepts);
 				startActivity(uneIntention);
 			}
