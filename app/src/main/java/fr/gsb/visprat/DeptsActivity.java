@@ -101,38 +101,21 @@ public class DeptsActivity extends AppCompatActivity {
 		this.buttonMedicament.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new MedicamentGet().execute(login, mdp);
 				Intent uneIntention;
 				// crée une intention passée à l'activité de classe DeptsActivity
 				uneIntention = new Intent(DeptsActivity.this, MedicamentsActivity.class);
 				uneIntention.putExtra(MedicamentsActivity.LOGIN, login);
-				uneIntention.putExtra(MedicamentsActivity.LESMEDICAMENTS, lesMedicaments);
+				uneIntention.putExtra(MedicamentsActivity.MDP, mdp);
 				DeptsActivity.this.startActivity(uneIntention);
 			}
 		});
 	}
 
-	private class MedicamentGet extends AsyncTask<String, Void, Object> {
-		@Override
-		/**
-		 * Permet de lancer l'exécution de la tache longue
-		 * ici, on demande à vérifier la connexion d'un visiteur à partir de son login et mot de passe
-		 */
-		protected Object doInBackground(String... params) {
-			// cette méthode permet de lancer l'exécution de la tache longue
-			// ici, on demande l'authentification du visiteur
-			Visiteur leVisiteur = null;
-			try {
-				lesMedicaments = PasserelleMedicament.getLesMedicaments((String) params[0], (String) params[1]);
-			} catch (Exception ex) {
-				return ex;
-			}
-			return lesMedicaments;
-		}
+
 
 
 //endregion ClassesInternesPrivees
-	}
+
 
 
 //endregion MethodesPrivees

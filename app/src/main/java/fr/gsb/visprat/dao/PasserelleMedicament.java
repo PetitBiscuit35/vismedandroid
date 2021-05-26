@@ -74,12 +74,8 @@ public class PasserelleMedicament extends Passerelle{
         //unId = unObjetJSON.getInt("id");
         undepotLegal = unObjetJSON.getString("depotLegal");
         unnomCommercial = unObjetJSON.getString("nomCommercial");
-        uncodeFamille = unObjetJSON.getString("codeFamille");
-        uncomposition = unObjetJSON.getString("composition");
-        uneffets = unObjetJSON.getString("effets");
-        uncontreIndic = unObjetJSON.getString("contreIndic");
-        unprixEchantillon = unObjetJSON.getInt("prixEchantillon");
-        unMedicament = new Medicament (undepotLegal, unnomCommercial, uncodeFamille, uncomposition, uneffets, uncontreIndic, unprixEchantillon);
+
+        unMedicament = new Medicament (undepotLegal, unnomCommercial);
         return unMedicament;
     }
 }

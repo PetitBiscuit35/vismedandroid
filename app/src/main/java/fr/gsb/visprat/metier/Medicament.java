@@ -24,6 +24,11 @@ public class Medicament implements Serializable {
         this.prixEchantillon = unprixEchantillon;
     }
 
+    public Medicament(String undepotLegal, String unnomCommercial) {
+        this.depotLegal = undepotLegal;
+        this.nomCommercial = unnomCommercial;
+    }
+
 //    /**
 //     * Fournit le login du visiteur
 //     * @return login du visiteur
