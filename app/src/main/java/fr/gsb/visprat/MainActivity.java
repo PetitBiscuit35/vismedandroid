@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
 	    this.editTextMdp = (EditText) this.findViewById(R.id.editTextMotPasse);
 
 	    // Ecouteurs pour les champs à renseigner
-	    editTextLogin.addTextChangedListener(new CheckIfEmpty());
-	    editTextMdp.addTextChangedListener(new CheckIfEmpty());
+	    //editTextLogin.addTextChangedListener(new CheckIfEmpty());
+	    //editTextMdp.addTextChangedListener(new CheckIfEmpty());
 
 	    // Désactive le bouton de validation
-	    buttonValider.setEnabled(false);
+	    //buttonValider.setEnabled(false);
 
 	    // on affecte un écouteur d'événement clic au bouton Valider
 	    this.buttonValider.setOnClickListener(new ButtonValiderClick());		

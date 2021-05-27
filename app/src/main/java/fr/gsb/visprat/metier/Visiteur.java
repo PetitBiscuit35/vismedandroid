@@ -19,6 +19,13 @@ public class Visiteur {
 		this.prenom = "";
 	}
 	/**
+	 * Modifie le mdp du Visiteur
+	 * @param unMdp
+	 */
+	public void setMdp(String unMdp) {
+		this.motPasse = unMdp;
+	}
+	/**
 	 * Fournit le login du visiteur
 	 * @return login du visiteur
 	 */

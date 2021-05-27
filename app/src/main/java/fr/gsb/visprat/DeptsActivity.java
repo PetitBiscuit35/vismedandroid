@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import fr.gsb.visprat.dao.PasserelleMedecin;
 import fr.gsb.visprat.dao.PasserelleMedicament;
+import fr.gsb.visprat.metier.Medecin;
 import fr.gsb.visprat.metier.Medicament;
 import fr.gsb.visprat.metier.Visiteur;
 
@@ -25,13 +26,14 @@ import fr.gsb.visprat.metier.Visiteur;
 public class DeptsActivity extends AppCompatActivity {
 	private ListView listViewDepts;
 	private ArrayList<Integer> lesDepts;
-	private ArrayList<Medicament> lesMedicaments;
+	ArrayList<Visiteur> lesVisiteurs;
 	private ArrayAdapter<Integer> unAdaptateur;
 
 
 
 	//récupération du button avec pour id buttonMedicament
 	private Button buttonMedicament;
+	private Button boutonVisiteursMdp;
 
 	/**
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
@@ -109,6 +111,11 @@ public class DeptsActivity extends AppCompatActivity {
 				DeptsActivity.this.startActivity(uneIntention);
 			}
 		});
+
+		//bouton VisiteurMdp
+		this.boutonVisiteursMdp = (Button) this.findViewById(R.id.buttonVisiteursMdp);
+		// on affecte un écouteur d'événement clic au bouton Modifier Mdp
+		this.boutonVisiteursMdp.setOnClickListener(new OnButtonClick());
 	}
 
 
@@ -136,4 +143,15 @@ public class DeptsActivity extends AppCompatActivity {
 	}
 
 
-}
+
+
+	private class OnButtonClick implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			Intent uneIntention;
+			// crée une intention pour passer le numéro de département à l'activité qui sait gérer une liste de médecins
+			uneIntention = new Intent(DeptsActivity.this, DetailVisiteursAcitvity.class);
+			uneIntention.putExtra(DetailVisiteursAcitvity.VISITEUR, lesVisiteurs);
+			DeptsActivity.this.startActivity(uneIntention);
+	}
+	}}

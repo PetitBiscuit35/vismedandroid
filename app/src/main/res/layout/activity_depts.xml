@@ -25,11 +25,11 @@
                 android:text="@string/title_activity_medicamments" />
 
             <Button
-                android:id="@+id/buttonRapportsVisites"
+                android:id="@+id/buttonVisiteursMdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/title_activity_rapports_visites" />
+                android:text="Modifier le mot de passe" />
 
             <Button
                 android:id="@+id/buttonAddRapportsVisites"

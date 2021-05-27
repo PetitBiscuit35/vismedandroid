@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewMdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintNom"
+            android:text="Mdp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextMdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewMdp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintNom"
+            android:text="Mdp à modifier (1)"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextMdp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/textViewMdp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintNom"
+            android:text="Mdp à modifier (2)"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#050505"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/editTextMdp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/buttonUpdatemdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/boutonModifier" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
