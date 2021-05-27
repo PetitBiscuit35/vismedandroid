@@ -23,6 +23,7 @@ public class DeptsActivity extends AppCompatActivity {
 	private ArrayList<Integer> lesDepts;
 	private ArrayAdapter<Integer> unAdaptateur;
 	private Button  buttonRapportsVisites;
+	private Button buttonChangerMdp;
 	/**
 	 * Liste des départements depts, nom de la donnée extra dans l'intention déclenchant l'activité DeptsActivity
 	 */
@@ -39,6 +40,18 @@ public class DeptsActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_depts);
 		initialisations();
+
+		// Boutton Changer Mdp
+		this.buttonChangerMdp = (Button) this.findViewById(R.id.buttonChangerMdp);
+		this.buttonChangerMdp.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent uneIntention;
+
+				uneIntention = new Intent(DeptsActivity.this, MotDePasseActivity.class);
+				startActivity(uneIntention);
+			}
+		});
 
 		// boutton Rapport de visite
 		this.buttonRapportsVisites = (Button) this.findViewById(R.id.buttonRapportsVisites);

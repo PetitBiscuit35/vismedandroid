@@ -36,6 +36,7 @@ public class Visiteur {
 	 * Fournit le nom du visiteur
 	 * @return nom du visiteur
 	 */
+	public void setMotPasse(String unMotPasse) { this.motPasse = unMotPasse; }
 	public String getNom() {
 		return this.nom;
 	}

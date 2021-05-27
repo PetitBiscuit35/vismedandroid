@@ -5,7 +5,7 @@ import android.text.Editable;
 public class Configuration {
 
     private static String protocol = "http";
-    public static String host = "192.168.0.27";
+    public static String host = "192.168.56.1";
     public static String path = "sio2/MONTEIL/WS-VisMed";
 
 
@@ -17,7 +17,7 @@ public class Configuration {
      */
     public static String getUrlHoteWS() {
         if(host == null){
-            Configuration.host = "192.168.0.27";
+            Configuration.host = "192.168.56.1";
         }
         if(path == null){
             Configuration.path = "sio2/MONTEIL/WS-VisMed";
@@ -26,7 +26,6 @@ public class Configuration {
         return url;
     }
 
-
     public static String getHost() {
         return host;
     }
@@ -34,8 +33,6 @@ public class Configuration {
     public static String getPath() {
         return path;
     }
-
-
 
 
     public static void setHost(String host) {

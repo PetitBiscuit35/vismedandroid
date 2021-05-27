@@ -40,6 +40,12 @@
             android:label="Rapports de visites">
 
         </activity>
+        <activity
+            android:name="fr.gsb.visprat.MotDePasseActivity"
+            android:label="Changement de mot de passe">
+
+        </activity>
+
 
     </application>
 </manifest>
